@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: cmcleaver10-bot/ht-studios # Repository path
+  repo: cmcleaver10-bot/Kurtz-mill-munitions # Repository path
   branch: main
 
 local_backend: false
