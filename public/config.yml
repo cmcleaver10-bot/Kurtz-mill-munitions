@@ -1,0 +1,91 @@
+backend:
+  name: github
+  repo: cmcleaver10-bot/ht-studios # Repository path
+  branch: main
+
+local_backend: false
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: "site_config"
+    label: "Site Configuration"
+    files:
+      - label: "General Settings"
+        name: "general"
+        file: "content/site-config/general.json"
+        fields:
+          - { label: "Shop Name", name: "shop_name", widget: "string" }
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "text" }
+          - { label: "About Text", name: "about_text", widget: "markdown" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
+
+  - name: "ammunition"
+    label: "Ammunition"
+    folder: "content/ammunition"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "title", widget: "string" }
+      - { label: "Brand", name: "brand", widget: "string" }
+      - { label: "Caliber", name: "caliber", widget: "string" }
+      - { label: "Grain", name: "grain", widget: "string" }
+      - { label: "Round Count", name: "round_count", widget: "number" }
+      - { label: "Price", name: "price", widget: "number", value_type: "float" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+
+  - name: "parts"
+    label: "Parts & Accessories"
+    folder: "content/parts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["Stocks", "Grips", "Optics", "Barrels", "Other"] }
+      - { label: "Price", name: "price", widget: "number", value_type: "float" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+
+  - name: "firearms"
+    label: "Used Firearms"
+    folder: "content/firearms"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "title", widget: "string" }
+      - { label: "Type", name: "type", widget: "select", options: ["Handgun", "Rifle", "Shotgun", "Other"] }
+      - { label: "Condition", name: "condition", widget: "select", options: ["New", "Excellent", "Good", "Fair"] }
+      - { label: "Price", name: "price", widget: "number", value_type: "float" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+
+  - name: "merch"
+    label: "Merch"
+    folder: "content/merch"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "title", widget: "string" }
+      - { label: "Type", name: "type", widget: "string" }
+      - { label: "Price", name: "price", widget: "number", value_type: "float" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "markdown" }
+
+  - name: "services"
+    label: "Services"
+    folder: "content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Service Name", name: "title", widget: "string" }
+      - { label: "Cost", name: "cost", widget: "string", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }
+      - { label: "Icon", name: "icon", widget: "string", hint: "Lucide icon name" }
