@@ -18,7 +18,7 @@ export default async function ContactPage() {
             Contact Us
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Have a question about a product or service? Reach out to our team of experts and we'll get back to you as soon as possible.
+            Have a question about a product or service? Reach out to our team of experts and we&apos;ll get back to you as soon as possible.
           </p>
         </div>
 

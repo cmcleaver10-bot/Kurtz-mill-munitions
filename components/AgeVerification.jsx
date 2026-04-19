@@ -10,7 +10,7 @@ export default function AgeVerification() {
   useEffect(() => {
     const verified = sessionStorage.getItem('age-verified');
     if (!verified) {
-      setShow(true);
+      setTimeout(() => setShow(true), 0);
     }
   }, []);
 

@@ -17,7 +17,7 @@ export default async function PartsPage() {
             Parts & Accessories
           </h1>
           <p className="text-muted-foreground max-w-2xl">
-            Upgrade your experience with high-quality optics, grips, stocks, and replacement components from the industry's leading manufacturers.
+            Upgrade your experience with high-quality optics, grips, stocks, and replacement components from the industry&apos;s leading manufacturers.
           </p>
         </div>
 
