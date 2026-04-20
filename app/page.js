@@ -31,7 +31,7 @@ export default async function Home() {
             </div>
             <div>
               <h3 className="font-bold uppercase text-sm tracking-wider">Expert Knowledge</h3>
-              <p className="text-muted-foreground text-xs">Decades of combined experience</p>
+              <p className="text-muted-foreground text-xs uppercase tracking-widest mt-1">Industry expert guidance</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
@@ -40,7 +40,7 @@ export default async function Home() {
             </div>
             <div>
               <h3 className="font-bold uppercase text-sm tracking-wider">Premium Quality</h3>
-              <p className="text-muted-foreground text-xs">Only the best brands in stock</p>
+              <p className="text-muted-foreground text-xs uppercase tracking-widest mt-1">Only the best brands in stock</p>
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@ export default async function Home() {
             </Link>
           </div>
         </div>
-        <div className="relative h-[500px] order-1 lg:order-2 rounded-2xl overflow-hidden shadow-2xl">
+        <div className="relative h-[350px] lg:h-[500px] order-1 lg:order-2 rounded-2xl overflow-hidden shadow-2xl">
           <Image
             src="/images/about.jpg"
             alt="About Kurtz Mill Munitions"

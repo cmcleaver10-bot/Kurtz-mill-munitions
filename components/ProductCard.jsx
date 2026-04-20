@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function ProductCard({ item }) {
-  const { title, price, image, brand, caliber, category, type, featured } = item;
+  const { title, price, image, brand, collection, caliber, category, type, featured } = item;
 
   return (
     <motion.div
@@ -62,7 +62,7 @@ export default function ProductCard({ item }) {
         )}
 
         <button className="w-full mt-6 py-3 border border-white/10 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
-          View Details
+          {['firearms', 'merch'].includes(collection) ? "See In Store For Purchase" : "View Details"}
         </button>
       </div>
     </motion.div>

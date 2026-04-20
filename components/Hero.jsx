@@ -17,10 +17,10 @@ export default function Hero({ config }) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="relative w-64 h-64 md:w-[600px] md:h-[450px] mb-4 group flex items-start justify-center"
+          className="relative w-full max-w-[320px] sm:max-w-[450px] md:max-w-[600px] aspect-[4/3] mb-4 group flex items-start justify-center mx-auto"
         >
-          <div className="absolute inset-0 bg-[var(--primary)]/10 blur-3xl rounded-full scale-110 group-hover:opacity-30 transition-opacity" />
-          <div className="relative w-full h-[600px] overflow-hidden">
+          <div className="absolute inset-0 bg-[var(--primary)]/10 blur-[80px] rounded-full scale-110 group-hover:opacity-30 transition-opacity" />
+          <div className="relative w-full h-[130%] overflow-hidden">
             <Image 
               src="/images/logo.png" 
               alt="Kurtz Mill Munitions Star Icon" 
@@ -39,11 +39,11 @@ export default function Hero({ config }) {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="flex items-center justify-center gap-4 mb-4"
           >
-            <div className="w-8 h-[1px] bg-[var(--primary)]" />
-            <span className="text-[var(--primary)] font-bold uppercase tracking-[0.4em] text-[10px]">
+            <div className="w-8 h-[1px] bg-[var(--primary)] shrink-0" />
+            <span className="text-[var(--primary)] font-bold uppercase tracking-[0.3em] text-[12px] md:text-sm text-center">
               {config.tagline}
             </span>
-            <div className="w-8 h-[1px] bg-[var(--primary)]" />
+            <div className="w-8 h-[1px] bg-[var(--primary)] shrink-0" />
           </motion.div>
           
           <motion.h1 
