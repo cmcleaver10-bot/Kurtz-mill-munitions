@@ -49,12 +49,6 @@ export default function Footer() {
             <a href="https://www.facebook.com/profile.php?id=61568021815140" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[var(--primary)] hover:text-black transition-all">
               <FacebookIcon size={18} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[var(--primary)] hover:text-black transition-all">
-              <Share2 size={18} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[var(--primary)] hover:text-black transition-all">
-              <Rss size={18} />
-            </a>
           </div>
         </div>
 
@@ -103,7 +97,10 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-muted-foreground uppercase tracking-widest">
-        <span>© {new Date().getFullYear()} Kurtz Mill Munitions LLC. All Rights Reserved.</span>
+        <div className="flex flex-col md:items-start gap-2 text-center md:text-left">
+          <span>© {new Date().getFullYear()} Kurtz Mill Munitions LLC. All Rights Reserved.</span>
+          <span>Powered By <a href="https://www.ctwebcreation.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">CT Web Creation</a></span>
+        </div>
         <div className="flex gap-8">
           <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
           <Link href="/legal" className="hover:text-white transition-colors">Legal Disclaimer</Link>
