@@ -101,9 +101,10 @@ export default function Footer() {
           <span>© {new Date().getFullYear()} Kurtz Mill Munitions LLC. All Rights Reserved.</span>
           <span>Powered By <a href="https://www.ctwebcreation.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">CT Web Creation</a></span>
         </div>
-        <div className="flex gap-8">
+        <div className="flex gap-8 items-center">
           <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
           <Link href="/legal" className="hover:text-white transition-colors">Legal Disclaimer</Link>
+          <Link href="/admin" className="text-white/20 hover:text-white/50 transition-colors text-[10px]">Admin</Link>
         </div>
       </div>
     </footer>
