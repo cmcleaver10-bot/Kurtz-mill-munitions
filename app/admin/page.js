@@ -1,19 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { auth, db, storage } from "@/lib/firebase";
-import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getProducts, saveProduct, deleteProduct } from "./actions";
 import { LogOut, Plus, Trash2, Edit2, Image as ImageIcon } from "lucide-react";
 import Image from "next/image";
 
 export default function AdminPage() {
-  const [user, setUser] = useState(null);
-  const [loadingConfig, setLoadingConfig] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   
   // Auth state
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState("");
 
@@ -24,6 +19,7 @@ export default function AdminPage() {
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState(null);
+  const [uploading, setUploading] = useState(false);
   
   // Form State
   const [formData, setFormData] = useState({
@@ -36,39 +32,28 @@ export default function AdminPage() {
     featured: false,
     image: ""
   });
-  const [imageFile, setImageFile] = useState(null);
-  const [uploading, setUploading] = useState(false);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoadingConfig(false);
-      if (currentUser) {
-        fetchProducts();
-      }
-    });
-    return () => unsubscribe();
-  }, []);
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const checkAuth = (e) => {
+    if (e) e.preventDefault();
     setAuthError("");
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      setAuthError("Failed to login. Please check your credentials.");
+    // SUPER SIMPLE HARDCODED PASSWORD AS REQUESTED
+    if (password === "admin123") {
+      setIsAuthenticated(true);
+      fetchProducts();
+    } else {
+      setAuthError("Incorrect password.");
     }
   };
 
-  const handleLogout = async () => {
-    await signOut(auth);
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setPassword("");
   };
 
   const fetchProducts = async () => {
     setIsLoading(true);
     try {
-      const querySnapshot = await getDocs(collection(db, "products"));
-      const items = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const items = await getProducts();
       setProducts(items);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -76,50 +61,32 @@ export default function AdminPage() {
     setIsLoading(false);
   };
 
-  const handleImageUpload = async (file) => {
-    if (!file) return null;
-    const storageRef = ref(storage, `products/${Date.now()}_${file.name}`);
-    await uploadBytes(storageRef, file);
-    return await getDownloadURL(storageRef);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUploading(true);
 
-    try {
-      let imageUrl = formData.image;
-      if (imageFile) {
-        imageUrl = await handleImageUpload(imageFile);
-      }
+    const payload = {
+      id: editingId,
+      title: formData.title,
+      price: parseFloat(formData.price) || 0,
+      collection: formData.collectionType, // matching old architecture
+      brand: formData.brand,
+      caliber: formData.caliber,
+      description: formData.description,
+      featured: formData.featured,
+      image: formData.image // For this simple setup, Uncle should paste an image URL here or use '/images/logo.png'
+    };
 
-      const payload = {
-        title: formData.title,
-        price: parseFloat(formData.price) || 0,
-        collection: formData.collectionType, // mapping
-        brand: formData.brand,
-        caliber: formData.caliber,
-        description: formData.description,
-        featured: formData.featured,
-        image: imageUrl,
-        updatedAt: new Date().toISOString()
-      };
+    const result = await saveProduct(payload, !!editingId);
 
-      if (editingId) {
-        await updateDoc(doc(db, "products", editingId), payload);
-      } else {
-        await addDoc(collection(db, "products"), { ...payload, createdAt: new Date().toISOString() });
-      }
-
+    if (result.success) {
       setFormData({
         title: "", price: "", collectionType: "ammunition", brand: "", caliber: "", description: "", featured: false, image: ""
       });
-      setImageFile(null);
       setEditingId(null);
       setIsModalOpen(false);
       fetchProducts();
-    } catch (error) {
-      console.error("Error saving product:", error);
+    } else {
       alert("Failed to save product.");
     }
     setUploading(false);
@@ -127,7 +94,7 @@ export default function AdminPage() {
 
   const handleDelete = async (id) => {
     if (confirm("Are you sure you want to delete this product?")) {
-      await deleteDoc(doc(db, "products", id));
+      await deleteProduct(id);
       fetchProducts();
     }
   };
@@ -144,15 +111,10 @@ export default function AdminPage() {
       image: product.image || ""
     });
     setEditingId(product.id);
-    setImageFile(null);
     setIsModalOpen(true);
   };
 
-  if (loadingConfig) {
-    return <div className="min-h-screen flex items-center justify-center bg-black text-white">Loading...</div>;
-  }
-
-  if (!user) {
+  if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8 bg-neutral-900 p-10 rounded-2xl border border-white/10">
@@ -160,28 +122,16 @@ export default function AdminPage() {
             <h2 className="text-center text-3xl font-extrabold text-white tracking-widest uppercase">Admin Login</h2>
             <p className="mt-2 text-center text-sm text-[var(--primary)] uppercase tracking-wider">Kurtz Mill Munitions System</p>
           </div>
-          <form className="mt-8 space-y-6" onSubmit={handleLogin}>
-            <div className="space-y-4 rounded-md shadow-sm">
-              <div>
-                <input
-                  type="email"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-3 border border-white/10 bg-black text-white placeholder-gray-500 rounded-t-md focus:outline-none focus:ring-[var(--primary)] focus:border-[var(--primary)] sm:text-sm"
-                  placeholder="Email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div>
-                <input
-                  type="password"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-3 border border-white/10 bg-black text-white placeholder-gray-500 rounded-b-md focus:outline-none focus:ring-[var(--primary)] focus:border-[var(--primary)] sm:text-sm"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
+          <form className="mt-8 space-y-6" onSubmit={checkAuth}>
+            <div className="rounded-md shadow-sm">
+              <input
+                type="password"
+                required
+                className="appearance-none relative block w-full px-3 py-3 border border-white/10 bg-black text-white placeholder-gray-500 rounded-md focus:outline-none focus:ring-[var(--primary)] focus:border-[var(--primary)] sm:text-sm"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
             {authError && <div className="text-red-500 text-sm text-center font-medium bg-red-500/10 py-2 rounded">{authError}</div>}
             <div>
@@ -189,7 +139,7 @@ export default function AdminPage() {
                 type="submit"
                 className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold uppercase tracking-widest rounded-md text-black bg-[var(--primary)] hover:scale-105 transition-transform"
               >
-                Sign In
+                Access Dashboard
               </button>
             </div>
           </form>
@@ -220,7 +170,6 @@ export default function AdminPage() {
             onClick={() => {
               setFormData({ title: "", price: "", collectionType: "ammunition", brand: "", caliber: "", description: "", featured: false, image: "" });
               setEditingId(null);
-              setImageFile(null);
               setIsModalOpen(true);
             }}
             className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform"
@@ -246,7 +195,7 @@ export default function AdminPage() {
                 {products.length === 0 ? (
                   <tr>
                     <td colSpan="5" className="px-6 py-12 text-center text-muted-foreground">
-                      No products found. Add one to get started.
+                      {isLoading ? "Fetching from database..." : "No products found. Add one to get started."}
                     </td>
                   </tr>
                 ) : (
@@ -340,16 +289,16 @@ export default function AdminPage() {
               </div>
 
               <div className="space-y-4 border border-white/10 rounded-xl p-4 bg-black/40">
-                <label className="text-xs font-bold uppercase tracking-widest text-[var(--primary)] block">Product Image</label>
-                {formData.image && !imageFile && (
-                  <div className="flex items-center gap-4">
+                <label className="text-xs font-bold uppercase tracking-widest text-[var(--primary)] block">Product Image URL</label>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-widest mb-2">Paste a web link to the image (e.g., https://example.com/image.jpg).</p>
+                <input type="text" value={formData.image} onChange={(e) => setFormData({...formData, image: e.target.value})} className="w-full bg-black border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[var(--primary)]" placeholder="https://..." />
+                {formData.image && (
+                  <div className="flex items-center gap-4 mt-4">
                     <div className="h-16 w-16 relative rounded overflow-hidden border border-white/10">
-                      <Image src={formData.image} fill className="object-cover" alt="Preview" />
+                      <img src={formData.image} className="w-full h-full object-cover" alt="Preview" />
                     </div>
-                    <span className="text-xs text-muted-foreground">Current image active</span>
                   </div>
                 )}
-                <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files[0])} className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:uppercase file:tracking-widest file:bg-[var(--primary)] file:text-black hover:file:opacity-90" />
               </div>
 
               <div className="flex items-center gap-3">
@@ -362,11 +311,7 @@ export default function AdminPage() {
                   Cancel
                 </button>
                 <button type="submit" disabled={uploading} className="px-6 py-3 bg-[var(--primary)] text-black rounded font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform disabled:opacity-50 disabled:hover:scale-100 flex items-center gap-2">
-                  {uploading ? (
-                     <span className="animate-pulse">Saving...</span>
-                  ) : (
-                     <>{editingId ? "Update Product" : "Create Product"}</>
-                  )}
+                  {uploading ? "Saving..." : <>{editingId ? "Update Product" : "Create Product"}</>}
                 </button>
               </div>
             </form>
