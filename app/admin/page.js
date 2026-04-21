@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getProducts, saveProduct, deleteProduct } from "./actions";
+import { db, storage } from "@/lib/firebase";
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { LogOut, Plus, Trash2, Edit2, Image as ImageIcon } from "lucide-react";
 import Image from "next/image";
 
@@ -19,7 +21,6 @@ export default function AdminPage() {
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState(null);
-  const [uploading, setUploading] = useState(false);
   
   // Form State
   const [formData, setFormData] = useState({
@@ -32,14 +33,21 @@ export default function AdminPage() {
     featured: false,
     image: ""
   });
+  const [imageFile, setImageFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+
+  // Note: Only fetch products once the password unlocks the dashboard.
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchProducts();
+    }
+  }, [isAuthenticated]);
 
   const checkAuth = (e) => {
     if (e) e.preventDefault();
     setAuthError("");
-    // SUPER SIMPLE HARDCODED PASSWORD AS REQUESTED
-    if (password === "admin123") {
+    if (password === "KurtzMill2026") {
       setIsAuthenticated(true);
-      fetchProducts();
     } else {
       setAuthError("Incorrect password.");
     }
@@ -53,7 +61,8 @@ export default function AdminPage() {
   const fetchProducts = async () => {
     setIsLoading(true);
     try {
-      const items = await getProducts();
+      const querySnapshot = await getDocs(collection(db, "products"));
+      const items = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setProducts(items);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -61,40 +70,58 @@ export default function AdminPage() {
     setIsLoading(false);
   };
 
+  const handleImageUpload = async (file) => {
+    if (!file) return null;
+    const storageRef = ref(storage, `products/${Date.now()}_${file.name}`);
+    await uploadBytes(storageRef, file);
+    return await getDownloadURL(storageRef);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUploading(true);
 
-    const payload = {
-      id: editingId,
-      title: formData.title,
-      price: parseFloat(formData.price) || 0,
-      collection: formData.collectionType, // matching old architecture
-      brand: formData.brand,
-      caliber: formData.caliber,
-      description: formData.description,
-      featured: formData.featured,
-      image: formData.image // For this simple setup, Uncle should paste an image URL here or use '/images/logo.png'
-    };
+    try {
+      let imageUrl = formData.image;
+      if (imageFile) {
+        imageUrl = await handleImageUpload(imageFile);
+      }
 
-    const result = await saveProduct(payload, !!editingId);
+      const payload = {
+        title: formData.title,
+        price: parseFloat(formData.price) || 0,
+        collection: formData.collectionType,
+        brand: formData.brand,
+        caliber: formData.caliber,
+        description: formData.description,
+        featured: formData.featured,
+        image: imageUrl,
+        updatedAt: new Date().toISOString()
+      };
 
-    if (result.success) {
+      if (editingId) {
+        await updateDoc(doc(db, "products", editingId), payload);
+      } else {
+        await addDoc(collection(db, "products"), { ...payload, createdAt: new Date().toISOString() });
+      }
+
       setFormData({
         title: "", price: "", collectionType: "ammunition", brand: "", caliber: "", description: "", featured: false, image: ""
       });
+      setImageFile(null);
       setEditingId(null);
       setIsModalOpen(false);
       fetchProducts();
-    } else {
-      alert("Failed to save product.");
+    } catch (error) {
+      console.error("Error saving product:", error);
+      alert("Failed to save product. Ensure Firebase Rules are Open.");
     }
     setUploading(false);
   };
 
   const handleDelete = async (id) => {
     if (confirm("Are you sure you want to delete this product?")) {
-      await deleteProduct(id);
+      await deleteDoc(doc(db, "products", id));
       fetchProducts();
     }
   };
@@ -111,6 +138,7 @@ export default function AdminPage() {
       image: product.image || ""
     });
     setEditingId(product.id);
+    setImageFile(null);
     setIsModalOpen(true);
   };
 
@@ -170,6 +198,7 @@ export default function AdminPage() {
             onClick={() => {
               setFormData({ title: "", price: "", collectionType: "ammunition", brand: "", caliber: "", description: "", featured: false, image: "" });
               setEditingId(null);
+              setImageFile(null);
               setIsModalOpen(true);
             }}
             className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform"
@@ -289,16 +318,16 @@ export default function AdminPage() {
               </div>
 
               <div className="space-y-4 border border-white/10 rounded-xl p-4 bg-black/40">
-                <label className="text-xs font-bold uppercase tracking-widest text-[var(--primary)] block">Product Image URL</label>
-                <p className="text-[10px] text-muted-foreground uppercase tracking-widest mb-2">Paste a web link to the image (e.g., https://example.com/image.jpg).</p>
-                <input type="text" value={formData.image} onChange={(e) => setFormData({...formData, image: e.target.value})} className="w-full bg-black border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[var(--primary)]" placeholder="https://..." />
-                {formData.image && (
-                  <div className="flex items-center gap-4 mt-4">
+                <label className="text-xs font-bold uppercase tracking-widest text-[var(--primary)] block">Product Image</label>
+                {formData.image && (!imageFile) && (
+                  <div className="flex items-center gap-4 mb-4">
                     <div className="h-16 w-16 relative rounded overflow-hidden border border-white/10">
-                      <img src={formData.image} className="w-full h-full object-cover" alt="Preview" />
+                      <Image src={formData.image} fill className="object-cover" alt="Preview" />
                     </div>
+                    <span className="text-xs text-muted-foreground">Current image active</span>
                   </div>
                 )}
+                <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files[0])} className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:uppercase file:tracking-widest file:bg-[var(--primary)] file:text-black hover:file:opacity-90" />
               </div>
 
               <div className="flex items-center gap-3">
@@ -311,7 +340,11 @@ export default function AdminPage() {
                   Cancel
                 </button>
                 <button type="submit" disabled={uploading} className="px-6 py-3 bg-[var(--primary)] text-black rounded font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform disabled:opacity-50 disabled:hover:scale-100 flex items-center gap-2">
-                  {uploading ? "Saving..." : <>{editingId ? "Update Product" : "Create Product"}</>}
+                  {uploading ? (
+                     <span className="animate-pulse">Saving...</span>
+                  ) : (
+                     <>{editingId ? "Update Product" : "Create Product"}</>
+                  )}
                 </button>
               </div>
             </form>
