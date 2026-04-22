@@ -7,6 +7,10 @@ export const metadata = {
   title: "Kurtz Mill Munitions LLC | Quality Firearms & Ammunition",
   description:
     "Your trusted source for premium firearms, ammunition, and expert gunsmith services. Dedicated to quality and precision.",
+  icons: {
+    icon: "/images/logo-icon.png",
+    apple: "/images/logo-icon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
