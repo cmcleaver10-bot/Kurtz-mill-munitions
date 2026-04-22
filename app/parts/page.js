@@ -6,6 +6,8 @@ export const metadata = {
   description: "Enhance your firearms with our selection of premium parts and accessories.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function PartsPage() {
   const products = await getCollectionData('parts');
 

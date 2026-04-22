@@ -6,6 +6,8 @@ export const metadata = {
   description: "Browse our extensive collection of rifle, handgun, and shotgun ammunition.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function AmmunitionPage() {
   const products = await getCollectionData('ammunition');
 

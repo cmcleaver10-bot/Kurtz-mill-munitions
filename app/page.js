@@ -5,6 +5,8 @@ import { getSiteConfig, getFeaturedProducts } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
 import Hero from '@/components/Hero';
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const config = await getSiteConfig();
   const featuredProducts = await getFeaturedProducts();

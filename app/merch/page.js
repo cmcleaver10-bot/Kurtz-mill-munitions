@@ -6,6 +6,8 @@ export const metadata = {
   description: "Shop Kurtz Mill Munitions apparel and accessories.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function MerchPage() {
   const products = await getCollectionData('merch');
 

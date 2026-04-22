@@ -6,6 +6,8 @@ export const metadata = {
   description: "Quality pre-owned firearms inspected and certified by our expert gunsmiths.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function UsedFirearmsPage() {
   const products = await getCollectionData('firearms');
 
