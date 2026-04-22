@@ -70,9 +70,6 @@ export default function Footer() {
           <ul className="flex flex-col gap-4 text-sm text-muted-foreground">
             <li><Link href="/contact" className="hover:text-[var(--primary)] transition-colors">Contact Us</Link></li>
             <li><Link href="/faq" className="hover:text-[var(--primary)] transition-colors">FAQs</Link></li>
-            <li><Link href="/shipping" className="hover:text-[var(--primary)] transition-colors">Shipping Policy</Link></li>
-            <li><Link href="/returns" className="hover:text-[var(--primary)] transition-colors">Returns</Link></li>
-            <li><Link href="/terms" className="hover:text-[var(--primary)] transition-colors">Terms of Service</Link></li>
           </ul>
         </div>
 
