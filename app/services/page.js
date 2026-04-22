@@ -16,7 +16,7 @@ export default function ServicesPage() {
             Services & Pricing
           </h1>
           <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">
-            Professional gunsmithing services for all your firearm needs. Military and first responders receive discounts on FFL transfers.
+            Expert, one-on-one gunsmithing services for all your firearm needs. Military and first responders receive discounts on FFL transfers.
           </p>
         </div>
 
@@ -162,11 +162,11 @@ export default function ServicesPage() {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-muted-foreground text-sm">Build Labor</span>
-                    <span className="font-bold">$100 <span className="text-[10px] font-normal text-muted-foreground ml-1">(~2 hrs)</span></span>
+                    <span className="font-bold">Custom Quote</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-muted-foreground text-sm">Parts</span>
-                    <span className="font-bold text-[var(--primary)]">$800 – $5,000+</span>
+                    <span className="font-bold text-[var(--primary)]">Based on Selection</span>
                   </div>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function ServicesPage() {
                   "Schedule a free consultation",
                   "Discuss your build goals and budget",
                   "Select parts (or bring your own)",
-                  "We handle the build"
+                  "Expertly built for you"
                 ].map((step, i) => (
                   <div key={i} className="flex gap-4 items-start">
                     <div className="w-6 h-6 rounded-full bg-[var(--primary)] text-black text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
