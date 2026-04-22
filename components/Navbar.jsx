@@ -36,12 +36,12 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <Link href="/" className="flex items-center group">
-          <div className="relative w-32 h-32">
+          <div className="relative w-24 h-24">
             <Image 
               src="/images/logo.png" 
               alt="Kurtz Mill Munitions" 
               fill
-              sizes="128px"
+              sizes="96px"
               className="object-contain group-hover:scale-105 transition-transform"
             />
           </div>
