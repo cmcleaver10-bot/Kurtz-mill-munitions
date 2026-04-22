@@ -1,10 +1,9 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 
 export default function LegalPage() {
   return (
     <div className="min-h-screen bg-black text-white selection:bg-[var(--primary)] selection:text-black">
-      <Navbar />
+
       
       <main className="pt-32 pb-24">
         <div className="max-w-4xl mx-auto px-6">
@@ -48,7 +47,7 @@ export default function LegalPage() {
         </div>
       </main>
 
-      <Footer />
+
     </div>
   );
 }

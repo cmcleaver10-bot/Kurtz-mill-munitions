@@ -79,7 +79,7 @@ export default async function ContactPage() {
           {/* Contact Form */}
           <div className="lg:col-span-2">
             <div className="p-8 md:p-12 bg-neutral-900 border border-white/5 rounded-2xl h-full">
-              <h3 className="text-2xl font-bold uppercase tracking-tight mb-8">Send us a Message</h3>
+              <h3 className="text-2xl font-bold uppercase tracking-tight mb-8">Send a Message</h3>
               <ContactForm />
             </div>
           </div>
