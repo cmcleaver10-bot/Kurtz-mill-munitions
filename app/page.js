@@ -118,7 +118,7 @@ export default async function Home() {
                   Need Professional Services?
                </h2>
                <p className="text-lg font-medium opacity-80">
-                  From deep cleaning and optics mounting to complete custom builds, our expert gunsmiths have you covered.
+                  From deep cleaning and optics mounting to complete custom builds, expert, one-on-one service has you covered.
                </p>
             </div>
             <Link href="/services" className="bg-black text-white px-8 py-4 font-black uppercase tracking-widest hover:scale-105 transition-transform shrink-0">
