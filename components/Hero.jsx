@@ -25,7 +25,7 @@ export default function Hero({ config }) {
               fill
               priority
               className="object-contain object-top relative z-10"
-              style={{ clipPath: 'inset(10% 0 32% 0)', transform: 'translateY(-10%)', mixBlendMode: 'screen' }}
+              style={{ clipPath: 'inset(10% 0 32% 0)', transform: 'translateY(-10%)' }}
             />
           </div>
         </motion.div>
