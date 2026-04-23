@@ -28,6 +28,7 @@ export default function Footer() {
                 fill
                 sizes="64px"
                 className="object-contain"
+                style={{ mixBlendMode: 'screen' }}
               />
             </div>
             <div className="flex flex-col">
