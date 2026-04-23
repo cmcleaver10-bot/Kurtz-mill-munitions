@@ -65,10 +65,14 @@ export default async function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-xs uppercase tracking-widest text-muted-foreground mb-1">Business Hours</h4>
-                    <div className="text-sm space-y-1">
-                       <div className="flex justify-between w-48"><span>Mon - Fri:</span> <span className="text-white">9am - 6pm</span></div>
-                       <div className="flex justify-between w-48"><span>Saturday:</span> <span className="text-white">10am - 4pm</span></div>
-                       <div className="flex justify-between w-48"><span>Sunday:</span> <span className="text-red-500 font-bold">Closed</span></div>
+                    <div className="text-sm space-y-2">
+                       <p className="text-white font-bold">By Appointment Only</p>
+                       <p className="text-muted-foreground">Available Monday - Sunday</p>
+                       <div className="pt-2 border-t border-white/5">
+                          <p className="text-[10px] uppercase tracking-widest font-bold text-[var(--primary)] mb-1">Schedule your visit:</p>
+                          <p className="text-white">Call/Text: 610-802-7359</p>
+                          <p className="text-white">Email: kurtzmillmunitions@gmail.com</p>
+                       </div>
                     </div>
                   </div>
                 </div>
