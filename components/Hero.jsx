@@ -18,14 +18,13 @@ export default function Hero({ config }) {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="relative w-full max-w-[320px] sm:max-w-[450px] md:max-w-[600px] aspect-[4/3] mb-4 group flex items-start justify-center mx-auto"
         >
-          <div className="relative w-full h-[130%] overflow-hidden">
+          <div className="relative w-full h-full overflow-hidden">
             <Image 
-              src="/images/logo.png" 
+              src="/images/logo-transparent.png" 
               alt="Kurtz Mill Munitions Star Icon" 
               fill
               priority
               className="object-contain object-top relative z-10"
-              style={{ clipPath: 'inset(10% 0 32% 0)', transform: 'translateY(-10%)', mixBlendMode: 'screen' }}
             />
           </div>
         </motion.div>
