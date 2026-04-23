@@ -23,11 +23,12 @@ export default function Footer() {
           <Link href="/" className="flex items-center gap-4 group">
             <div className="relative w-16 h-16">
               <Image 
-                src="/images/logo-transparent.png" 
+                src="/images/logo.png" 
                 alt="Kurtz Mill Munitions" 
                 fill
                 sizes="64px"
                 className="object-contain"
+                style={{ mixBlendMode: 'screen' }}
               />
             </div>
             <div className="flex flex-col">
