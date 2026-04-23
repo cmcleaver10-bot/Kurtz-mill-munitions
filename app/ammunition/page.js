@@ -2,8 +2,8 @@ import { getCollectionData } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
 
 export const metadata = {
-  title: "Ammunition | Kurtz Mill Munitions LLC",
-  description: "Browse our extensive collection of rifle, handgun, and shotgun ammunition.",
+  title: "Ammunition in Mohnton, PA | Kurtz Mill Munitions LLC",
+  description: "Browse our extensive collection of ammunition in Mohnton, PA. Serving Reading, Birdsboro, and Berks County.",
 };
 
 export const dynamic = "force-dynamic";
@@ -19,7 +19,7 @@ export default async function AmmunitionPage() {
             Ammunition
           </h1>
           <p className="text-muted-foreground max-w-2xl">
-            From bulk range ammo to premium match-grade cartridges, we carry a wide selection of calibers to keep you on target.
+            From bulk range ammo to premium match-grade cartridges, I carry a wide selection of calibers for shooters in Mohnton, Birdsboro, Reading, and the surrounding Berks County area.
           </p>
         </div>
 

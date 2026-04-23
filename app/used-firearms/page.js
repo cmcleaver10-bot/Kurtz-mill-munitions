@@ -2,8 +2,8 @@ import { getCollectionData } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
 
 export const metadata = {
-  title: "Used Firearms | Kurtz Mill Munitions LLC",
-  description: "Quality pre-owned firearms inspected and certified by our expert gunsmiths.",
+  title: "Used Firearms in Mohnton, PA | Kurtz Mill Munitions LLC",
+  description: "Browse quality pre-owned firearms in Mohnton, PA. Expertly inspected and serving the Birdsboro and Reading areas.",
 };
 
 export const dynamic = "force-dynamic";
@@ -19,7 +19,7 @@ export default async function UsedFirearmsPage() {
             Used Firearms
           </h1>
           <p className="text-muted-foreground max-w-2xl">
-            Our pre-owned inventory is thoroughly inspected for safety and performance. Find great deals on reliable handguns, rifles, and shotguns.
+            My pre-owned inventory is thoroughly inspected for safety and performance. I provide reliable handguns, rifles, and shotguns to owners in Mohnton, Birdsboro, Reading, and beyond.
           </p>
         </div>
 

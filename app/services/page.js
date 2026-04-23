@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Wrench, ShieldCheck, Zap, Settings, Info, ArrowRight } from 'lucide-react';
 
 export const metadata = {
-  title: "Services & Pricing | Kurtz Mill Munitions LLC",
-  description: "Professional gunsmithing, cleaning, and custom AR-15 builds.",
+  title: "Gunsmithing Services in Mohnton, PA | Kurtz Mill Munitions LLC",
+  description: "Professional gunsmithing, cleaning, and custom AR-15 builds serving Mohnton, Birdsboro, Reading, and Berks County.",
 };
 
 export default function ServicesPage() {
@@ -16,7 +16,7 @@ export default function ServicesPage() {
             Services & Pricing
           </h1>
           <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">
-            Expert, one-on-one gunsmithing services for all your firearm needs. Military and first responders receive discounts on FFL transfers.
+            Expert, one-on-one gunsmithing services for Mohnton, Birdsboro, Reading, and surrounding Berks and Chester County areas. Military and first responders receive discounts on FFL transfers.
           </p>
         </div>
 

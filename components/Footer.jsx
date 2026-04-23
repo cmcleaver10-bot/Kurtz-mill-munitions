@@ -79,7 +79,11 @@ export default function Footer() {
           <ul className="flex flex-col gap-5 text-sm text-muted-foreground">
             <li className="flex gap-3">
               <MapPin size={18} className="text-[var(--primary)] shrink-0" />
-              <span>3371 Morgantown Pa, Mohnton, PA, United States, Pennsylvania</span>
+              <span>3371 Morgantown Rd, Mohnton, PA 19540</span>
+            </li>
+            <li className="flex gap-3 italic text-xs">
+              <Share2 size={14} className="text-[var(--primary)] shrink-0" />
+              <span>Serving Birdsboro, Reading, Pottstown, West Chester & surrounding areas</span>
             </li>
             <li className="flex gap-3">
               <Phone size={18} className="text-[var(--primary)] shrink-0" />

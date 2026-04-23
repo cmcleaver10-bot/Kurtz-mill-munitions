@@ -3,8 +3,8 @@ import ContactForm from '@/components/ContactForm';
 import { getSiteConfig } from '@/lib/data';
 
 export const metadata = {
-  title: "Contact Us | Kurtz Mill Munitions LLC",
-  description: "Get in touch with our expert team for inquiries about firearms, ammunition, and services.",
+  title: "Contact Kurtz Mill Munitions | Mohnton, PA Gun Shop",
+  description: "Get in touch with our Mohnton, PA gun shop. Serving Birdsboro, Reading, and the surrounding Berks and Chester County areas.",
 };
 
 export default async function ContactPage() {
@@ -18,7 +18,7 @@ export default async function ContactPage() {
             Contact Us
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Have a question about a product or service? Reach out to our team of experts and we&apos;ll get back to you as soon as possible.
+            Located in Mohnton, PA, I proudly serve Birdsboro, Reading, and the surrounding communities. Reach out for expert assistance with firearms, ammunition, or gunsmithing services.
           </p>
         </div>
 
