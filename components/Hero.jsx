@@ -8,7 +8,6 @@ export default function Hero({ config }) {
   return (
     <section className="relative min-h-[80vh] flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_70%)] opacity-10" />
         <div className="absolute inset-0 bg-black" />
       </div>
 
@@ -19,7 +18,6 @@ export default function Hero({ config }) {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="relative w-full max-w-[320px] sm:max-w-[450px] md:max-w-[600px] aspect-[4/3] mb-4 group flex items-start justify-center mx-auto"
         >
-          <div className="absolute inset-0 bg-[var(--primary)]/10 blur-[80px] rounded-full scale-110 group-hover:opacity-30 transition-opacity" />
           <div className="relative w-full h-[130%] overflow-hidden">
             <Image 
               src="/images/logo.png" 
