@@ -20,11 +20,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         {/* Branding */}
         <div className="flex flex-col gap-6">
-          <Link href="/" className="flex flex-col items-start gap-2 group">
+          <Link href="/" className="flex items-center">
             <img src="/images/logo.png?v=4" alt="Kurtz Mill Munitions" className="h-16" />
-            <span className="text-[10px] text-[var(--primary)] font-bold uppercase tracking-widest opacity-80 group-hover:opacity-100 transition-opacity">
-              Serving Mohnton, Birdsboro, Reading & Areas
-            </span>
           </Link>
           <p className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.2em] italic -mt-2">
             Where tradition meets readiness
