@@ -17,17 +17,16 @@ export default function Hero({ config }) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="relative w-full max-w-[320px] sm:max-w-[450px] md:max-w-[600px] aspect-[4/3] mb-4 group flex items-start justify-center mx-auto"
+          className="relative w-full max-w-[320px] sm:max-w-[450px] md:max-w-[600px] aspect-[4/3] mb-8 group flex items-start justify-center mx-auto"
         >
           <div className="absolute inset-0 bg-[var(--primary)]/10 blur-[80px] rounded-full scale-110 group-hover:opacity-30 transition-opacity" />
-          <div className="relative w-full h-[130%] overflow-hidden">
+          <div className="relative w-full h-full overflow-hidden">
             <Image 
               src="/images/logo.png" 
-              alt="Kurtz Mill Munitions Star Icon" 
+              alt="Kurtz Mill Munitions Logo" 
               fill
               priority
-              className="object-contain object-top relative z-10"
-              style={{ clipPath: 'inset(10% 0 32% 0)', transform: 'translateY(-10%)' }}
+              className="object-contain relative z-10"
             />
           </div>
         </motion.div>
