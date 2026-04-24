@@ -22,11 +22,12 @@ export default function Hero({ config }) {
           <div className="absolute inset-0 bg-[var(--primary)]/10 blur-[100px] rounded-full scale-110 opacity-50 group-hover:opacity-70 transition-opacity" />
           <div className="relative w-full h-full overflow-hidden">
             <Image 
-              src="/images/logo-hero.png" 
+              src="/images/logo-original.jpg" 
               alt="Kurtz Mill Munitions Logo" 
               fill
               priority
               className="object-contain relative z-10"
+              style={{ mixBlendMode: 'screen' }}
             />
           </div>
         </motion.div>

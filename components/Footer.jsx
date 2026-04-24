@@ -23,11 +23,12 @@ export default function Footer() {
           <Link href="/" className="flex items-center gap-4 group">
             <div className="relative w-16 h-16">
               <Image 
-                src="/images/logo-icon.png" 
+                src="/images/logo-original.jpg" 
                 alt="Kurtz Mill Munitions" 
                 fill
                 sizes="64px"
                 className="object-contain"
+                style={{ clipPath: 'inset(0 0 30% 0)', transform: 'scale(1.3)', mixBlendMode: 'screen' }}
               />
             </div>
             <div className="flex flex-col">

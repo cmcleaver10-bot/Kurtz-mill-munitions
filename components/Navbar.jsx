@@ -38,11 +38,12 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-4 group">
           <div className="relative w-12 h-12">
             <Image 
-              src="/images/logo-icon.png" 
+              src="/images/logo-original.jpg" 
               alt="Kurtz Mill Munitions" 
               fill
               sizes="48px"
               className="object-contain group-hover:scale-110 transition-transform"
+              style={{ clipPath: 'inset(0 0 30% 0)', transform: 'scale(1.3)', mixBlendMode: 'screen' }}
             />
           </div>
           <div className="flex flex-col">
