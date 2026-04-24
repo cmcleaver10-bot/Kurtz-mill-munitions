@@ -26,14 +26,24 @@ export default function Hero({ config }) {
               alt="Kurtz Mill Munitions Logo" 
               className="w-full h-full object-contain relative z-10"
             />
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5, duration: 1 }}
-              className="text-[var(--primary)] font-bold uppercase tracking-[0.3em] mt-6 text-[10px] md:text-xs text-center"
+              className="mt-8 flex flex-col items-center"
             >
-              Serving Mohnton, Birdsboro, Reading & Surrounding Areas
-            </motion.p>
+              <span className="text-[var(--primary)] font-black uppercase tracking-[0.4em] text-[10px] md:text-xs mb-3">
+                Areas Served
+              </span>
+              <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 max-w-lg mx-auto">
+                {['Mohnton', 'Birdsboro', 'Reading', 'Pottstown', 'West Chester'].map((city, i) => (
+                  <span key={city} className="text-white/40 text-[9px] md:text-[10px] uppercase tracking-widest font-medium flex items-center">
+                    {city}
+                    {i < 4 && <span className="ml-4 w-1 h-1 rounded-full bg-[var(--primary)]/30" />}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </motion.div>
 
