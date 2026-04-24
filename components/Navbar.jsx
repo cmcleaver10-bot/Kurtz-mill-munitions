@@ -36,7 +36,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <Link href="/" className="flex items-center">
-          <img src="/images/logo.png" alt="Kurtz Mill Munitions" className="h-14" />
+          <img src="/images/logo.png?v=2" alt="Kurtz Mill Munitions" className="h-14" />
         </Link>
 
         {/* Desktop Nav */}
