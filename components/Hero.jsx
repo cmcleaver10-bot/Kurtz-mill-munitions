@@ -29,24 +29,19 @@ export default function Hero({ config }) {
           </div>
         </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
-          className="mt-4 mb-12 flex flex-col items-center"
-        >
-          <span className="text-[var(--primary)] font-black uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4">
+        <div className="mt-8 mb-10 flex flex-col items-center w-full px-4">
+          <span className="text-[var(--primary)] font-black uppercase tracking-[0.3em] text-[11px] md:text-xs mb-5">
             Areas Served
           </span>
-          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 max-w-2xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 max-w-2xl mx-auto">
             {['Mohnton', 'Birdsboro', 'Reading', 'Pottstown', 'West Chester'].map((city, i) => (
-              <span key={city} className="text-white/40 text-[9px] md:text-[10px] uppercase tracking-widest font-medium flex items-center">
+              <span key={city} className="text-[var(--primary)] text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold flex items-center">
                 {city}
-                {i < 4 && <span className="ml-4 w-1 h-1 rounded-full bg-[var(--primary)]/30" />}
+                {i < 4 && <span className="hidden md:block ml-6 w-1.5 h-1.5 rounded-full bg-[var(--primary)]/40" />}
               </span>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         <div className="max-w-4xl">
           <motion.div 
