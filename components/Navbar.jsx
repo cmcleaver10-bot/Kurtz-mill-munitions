@@ -35,24 +35,8 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-4 group">
-          <div className="relative w-12 h-12">
-            <Image 
-              src="/images/logo-original.jpg" 
-              alt="Kurtz Mill Munitions" 
-              fill
-              sizes="48px"
-              className="object-contain group-hover:scale-110 transition-transform"
-            />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-bold text-lg tracking-tighter uppercase leading-none">
-              Kurtz Mill
-            </span>
-            <span className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest leading-none mt-1">
-              Munitions
-            </span>
-          </div>
+        <Link href="/" className="flex items-center">
+          <img src="/images/logo.png" alt="Kurtz Mill Munitions" className="h-14" />
         </Link>
 
         {/* Desktop Nav */}

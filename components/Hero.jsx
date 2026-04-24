@@ -21,12 +21,10 @@ export default function Hero({ config }) {
         >
           <div className="absolute inset-0 bg-[var(--primary)]/10 blur-[100px] rounded-full scale-110 opacity-50 group-hover:opacity-70 transition-opacity" />
           <div className="relative w-full h-full overflow-hidden">
-            <Image 
-              src="/images/logo-original.jpg" 
+            <img 
+              src="/images/logo.png" 
               alt="Kurtz Mill Munitions Logo" 
-              fill
-              priority
-              className="object-contain relative z-10"
+              className="w-full h-full object-contain relative z-10"
             />
           </div>
         </motion.div>
