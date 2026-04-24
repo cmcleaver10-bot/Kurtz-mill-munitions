@@ -29,15 +29,15 @@ export default function Hero({ config }) {
           </div>
         </motion.div>
 
-        <div className="mt-8 mb-10 flex flex-col items-center w-full px-4">
-          <span className="text-[var(--primary)] font-black uppercase tracking-[0.3em] text-[11px] md:text-xs mb-5">
+        <div className="mt-10 mb-12 flex flex-col items-center w-full px-4">
+          <span className="text-[var(--primary)] font-black uppercase tracking-[0.5em] text-xs md:text-sm mb-6 opacity-90">
             Areas Served
           </span>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 max-w-2xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 max-w-3xl mx-auto">
             {['Mohnton', 'Birdsboro', 'Reading', 'Pottstown', 'West Chester'].map((city, i) => (
-              <span key={city} className="text-[var(--primary)] text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold flex items-center">
+              <span key={city} className="text-[var(--primary)] text-[11px] md:text-[13px] uppercase tracking-[0.25em] font-black flex items-center">
                 {city}
-                {i < 4 && <span className="hidden md:block ml-6 w-1.5 h-1.5 rounded-full bg-[var(--primary)]/40" />}
+                {i < 4 && <span className="hidden md:block ml-8 w-2 h-2 rounded-full bg-[var(--primary)]/50 shadow-[0_0_10px_var(--primary)]/30" />}
               </span>
             ))}
           </div>
