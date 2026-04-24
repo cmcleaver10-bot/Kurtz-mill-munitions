@@ -35,8 +35,11 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <Link href="/" className="flex items-center">
-          <img src="/images/logo.png?v=4" alt="Kurtz Mill Munitions" className="h-14" />
+        <Link href="/" className="flex flex-col items-start group">
+          <img src="/images/logo.png?v=4" alt="Kurtz Mill Munitions" className="h-12 md:h-14" />
+          <span className="text-[8px] md:text-[10px] text-[var(--primary)] font-bold uppercase tracking-widest mt-1 opacity-80 group-hover:opacity-100 transition-opacity">
+            Serving Mohnton, Birdsboro, Reading & Areas
+          </span>
         </Link>
 
         {/* Desktop Nav */}

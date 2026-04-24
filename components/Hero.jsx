@@ -26,6 +26,14 @@ export default function Hero({ config }) {
               alt="Kurtz Mill Munitions Logo" 
               className="w-full h-full object-contain relative z-10"
             />
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 1 }}
+              className="text-[var(--primary)] font-bold uppercase tracking-[0.3em] mt-6 text-[10px] md:text-xs text-center"
+            >
+              Serving Mohnton, Birdsboro, Reading & Surrounding Areas
+            </motion.p>
           </div>
         </motion.div>
 
