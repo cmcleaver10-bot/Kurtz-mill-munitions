@@ -43,7 +43,6 @@ export default function Navbar() {
               fill
               sizes="48px"
               className="object-contain group-hover:scale-110 transition-transform"
-              style={{ clipPath: 'inset(0 0 30% 0)', transform: 'scale(1.3)', mixBlendMode: 'screen' }}
             />
           </div>
           <div className="flex flex-col">

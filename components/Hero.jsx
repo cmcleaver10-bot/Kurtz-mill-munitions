@@ -27,7 +27,6 @@ export default function Hero({ config }) {
               fill
               priority
               className="object-contain relative z-10"
-              style={{ mixBlendMode: 'screen' }}
             />
           </div>
         </motion.div>

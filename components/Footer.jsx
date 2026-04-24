@@ -28,7 +28,6 @@ export default function Footer() {
                 fill
                 sizes="64px"
                 className="object-contain"
-                style={{ clipPath: 'inset(0 0 30% 0)', transform: 'scale(1.3)', mixBlendMode: 'screen' }}
               />
             </div>
             <div className="flex flex-col">
