@@ -21,7 +21,7 @@ export default function Footer() {
         {/* Branding */}
         <div className="flex flex-col gap-6">
           <Link href="/" className="flex items-center">
-            <img src="/images/logo.png?v=2" alt="Kurtz Mill Munitions" className="h-16" />
+            <img src="/images/logo.png?v=3" alt="Kurtz Mill Munitions" className="h-16" />
           </Link>
           <p className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.2em] italic -mt-2">
             Where tradition meets readiness

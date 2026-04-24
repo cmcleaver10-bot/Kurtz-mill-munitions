@@ -22,7 +22,7 @@ export default function Hero({ config }) {
           <div className="absolute inset-0 bg-[var(--primary)]/10 blur-[100px] rounded-full scale-110 opacity-50 group-hover:opacity-70 transition-opacity" />
           <div className="relative w-full h-full overflow-hidden">
             <img 
-              src="/images/logo.png?v=2" 
+              src="/images/logo.png?v=3" 
               alt="Kurtz Mill Munitions Logo" 
               className="w-full h-full object-contain relative z-10"
             />
