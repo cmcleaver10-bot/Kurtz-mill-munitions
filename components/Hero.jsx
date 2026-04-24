@@ -17,12 +17,12 @@ export default function Hero({ config }) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="relative w-full max-w-[320px] sm:max-w-[450px] md:max-w-[600px] aspect-[4/3] mb-8 group flex items-start justify-center mx-auto"
+          className="relative w-full max-w-[350px] sm:max-w-[500px] md:max-w-[700px] aspect-square mb-8 group flex items-start justify-center mx-auto"
         >
-          <div className="absolute inset-0 bg-[var(--primary)]/10 blur-[80px] rounded-full scale-110 group-hover:opacity-30 transition-opacity" />
+          <div className="absolute inset-0 bg-[var(--primary)]/10 blur-[100px] rounded-full scale-110 opacity-50 group-hover:opacity-70 transition-opacity" />
           <div className="relative w-full h-full overflow-hidden">
             <Image 
-              src="/images/logo.png" 
+              src="/images/logo-hero.png" 
               alt="Kurtz Mill Munitions Logo" 
               fill
               priority
@@ -36,46 +36,13 @@ export default function Hero({ config }) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="flex items-center justify-center gap-4 mb-4"
+            className="flex flex-wrap justify-center gap-5 mt-4"
           >
-            <div className="w-8 h-[1px] bg-[var(--primary)] shrink-0" />
-            <span className="text-[var(--primary)] font-bold uppercase tracking-[0.3em] text-[12px] md:text-sm text-center">
-              {config.tagline}
-            </span>
-            <div className="w-8 h-[1px] bg-[var(--primary)] shrink-0" />
-          </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-6 leading-[0.9] text-white"
-          >
-            <span className="block">{config.hero_title.split(' & ')[0]}</span>
-            <span className="text-[var(--primary)]">&</span>
-            <span className="block">{config.hero_title.split(' & ')[1]}</span>
-          </motion.h1>
-
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto"
-          >
-            {config.hero_subtitle}
-          </motion.p>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="flex flex-wrap justify-center gap-5"
-          >
-            <Link href="/ammunition" className="btn-primary px-8 text-xs min-w-[180px]">
-              Browse Ammunition
+            <Link href="/ammunition" className="btn-primary px-8 text-xs min-w-[200px]">
+              Shop Inventory Catalog
             </Link>
-            <Link href="/used-firearms" className="btn-secondary px-8 text-xs min-w-[180px]">
-              Inventory Catalog
+            <Link href="/services" className="btn-secondary px-8 text-xs min-w-[200px]">
+              Our Professional Services
             </Link>
           </motion.div>
         </div>

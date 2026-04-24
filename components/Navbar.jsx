@@ -38,7 +38,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-4 group">
           <div className="relative w-12 h-12">
             <Image 
-              src="/images/logo.png" 
+              src="/images/logo-icon.png" 
               alt="Kurtz Mill Munitions" 
               fill
               sizes="48px"

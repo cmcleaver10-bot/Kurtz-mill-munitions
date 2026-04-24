@@ -23,7 +23,7 @@ export default function Footer() {
           <Link href="/" className="flex items-center gap-4 group">
             <div className="relative w-16 h-16">
               <Image 
-                src="/images/logo.png" 
+                src="/images/logo-icon.png" 
                 alt="Kurtz Mill Munitions" 
                 fill
                 sizes="64px"
