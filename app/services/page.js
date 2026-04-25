@@ -93,23 +93,19 @@ export default function ServicesPage() {
               <div className="w-12 h-12 bg-[var(--primary)]/10 rounded-xl flex items-center justify-center">
                 <Wrench className="text-[var(--primary)]" size={24} />
               </div>
-              <h2 className="text-2xl font-bold uppercase tracking-tight">Technical Services</h2>
+              <h2 className="text-2xl font-bold uppercase tracking-tight">Repairs & Assembly Services</h2>
             </div>
             <div className="space-y-6">
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <h3 className="font-bold uppercase tracking-widest text-sm">Repairs</h3>
-                  <span className="text-xl font-bold">$35<span className="text-xs text-muted-foreground font-normal"> / hour</span></span>
+                  <h3 className="font-bold uppercase tracking-widest text-sm">Labor Rate</h3>
+                  <span className="text-xl font-bold">$50<span className="text-xs text-muted-foreground font-normal"> / hour</span></span>
                 </div>
                 <p className="text-xs text-muted-foreground">Plus cost of parts</p>
               </div>
-              <div className="pt-6 border-t border-white/5">
-                <div className="flex justify-between items-center mb-1">
-                  <h3 className="font-bold uppercase tracking-widest text-sm">Assembly</h3>
-                  <span className="text-xl font-bold">$25<span className="text-xs text-muted-foreground font-normal"> / hour</span></span>
-                </div>
-                <p className="text-xs text-muted-foreground">Plus cost of parts</p>
-              </div>
+              <p className="text-sm text-muted-foreground pt-4 border-t border-white/5">
+                Expert repairs, component assembly, and diagnostic services tailored to your specific needs.
+              </p>
             </div>
           </div>
 
@@ -121,23 +117,24 @@ export default function ServicesPage() {
               </div>
               <h2 className="text-2xl font-bold uppercase tracking-tight">Optics Services</h2>
             </div>
-            <div className="space-y-4">
-              <div className="flex justify-between text-sm pb-3 border-b border-white/5">
+            <div className="space-y-4 mb-6">
+              <div className="flex justify-between text-sm pb-2 border-b border-white/5">
                 <span className="text-muted-foreground">Scope Mounting</span>
-                <span>$20</span>
               </div>
-              <div className="flex justify-between text-sm pb-3 border-b border-white/5">
+              <div className="flex justify-between text-sm pb-2 border-b border-white/5">
                 <span className="text-muted-foreground">Red Dot Mounting</span>
-                <span>$10</span>
               </div>
-              <div className="flex justify-between text-sm pb-3 border-b border-white/5">
+              <div className="flex justify-between text-sm pb-2 border-b border-white/5">
                 <span className="text-muted-foreground">Boresighting</span>
-                <span>$5</span>
               </div>
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between text-sm pb-2 border-b border-white/5">
                 <span className="text-muted-foreground">True Zero</span>
-                <span className="text-[var(--primary)] font-bold">$60</span>
               </div>
+            </div>
+            <div className="p-4 bg-[var(--primary)]/5 border border-[var(--primary)]/10 rounded-xl text-center">
+              <p className="text-xs text-[var(--primary)] font-bold uppercase tracking-widest">
+                Pricing based on selection - contact for custom quote
+              </p>
             </div>
           </div>
         </div>
@@ -161,13 +158,12 @@ export default function ServicesPage() {
                 <h3 className="text-sm font-bold uppercase tracking-widest mb-4">Pricing</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-muted-foreground text-sm">Build Labor</span>
-                    <span className="font-bold">Custom Quote</span>
+                    <span className="text-muted-foreground text-sm">Labor & Parts</span>
+                    <span className="font-bold text-[var(--primary)] text-right">Based on Selection</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-muted-foreground text-sm">Parts</span>
-                    <span className="font-bold text-[var(--primary)]">Based on Selection</span>
-                  </div>
+                  <p className="text-[10px] text-muted-foreground mt-4 italic">
+                    Custom quotes available based on your specific build requirements
+                  </p>
                 </div>
               </div>
             </div>
