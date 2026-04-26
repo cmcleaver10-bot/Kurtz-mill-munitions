@@ -17,22 +17,11 @@ export default function ContactForm() {
     setStatus('sending');
     
     try {
-      // 1. Save to Firestore (Internal Backup)
-      const { db } = await import('@/lib/firebase');
-      const { collection, addDoc, serverTimestamp } = await import('firebase/firestore');
-      
-      await addDoc(collection(db, 'messages'), {
-        ...formData,
-        timestamp: serverTimestamp(),
-        read: false
-      });
-
-      // 2. Send Email via Formspree
-      const response = await fetch('https://formspree.io/f/mdayjwen', {
+      // Send to internal API route
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
         },
         body: JSON.stringify(formData)
       });
@@ -41,10 +30,10 @@ export default function ContactForm() {
         setStatus('success');
         setFormData({ name: '', email: '', subject: 'General Inquiry', message: '' });
       } else {
-        throw new Error('Formspree submission failed');
+        throw new Error('API submission failed');
       }
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Submission Error:', error);
       setStatus('error');
     }
   };
