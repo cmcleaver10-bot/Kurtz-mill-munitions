@@ -68,11 +68,11 @@ export default async function Home() {
           <div className="space-y-6 text-muted-foreground leading-relaxed">
             <p>{config.about_text}</p>
             <p>
-              Based in Mohnton, PA, I proudly serve customers in Birdsboro, Reading, Pottstown, West Chester, and throughout Berks and Chester Counties.
+              Based in Mohnton, PA, we proudly serve customers in Birdsboro, Reading, Pottstown, West Chester, and throughout Berks and Chester Counties.
             </p>
             <p>
-              Whether you are a first-time owner or a seasoned competitive shooter, I am here to provide 
-              the tools and knowledge you need to succeed. My mission is to support the 2nd Amendment 
+              Whether you are a first-time owner or a seasoned competitive shooter, we are here to provide 
+              the tools and knowledge you need to succeed. Our mission is to support the 2nd Amendment 
               through education, safety, and quality gear in our local community.
             </p>
           </div>

@@ -18,7 +18,7 @@ export default async function ContactPage() {
             Contact Us
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Located in Mohnton, PA, I proudly serve Birdsboro, Reading, and the surrounding communities. Reach out for expert assistance with firearms, ammunition, or gunsmithing services.
+            Located in Mohnton, PA, we proudly serve Birdsboro, Reading, and the surrounding communities. Reach out for expert assistance with firearms, ammunition, or gunsmithing services.
           </p>
         </div>
 

@@ -19,7 +19,7 @@ export default async function AmmunitionPage() {
             Ammunition
           </h1>
           <p className="text-muted-foreground max-w-2xl">
-            From bulk range ammo to premium match-grade cartridges, I carry a wide selection of calibers for shooters in Mohnton, Birdsboro, Reading, and the surrounding Berks County area.
+            From bulk range ammo to premium match-grade cartridges, we carry a wide selection of calibers for shooters in Mohnton, Birdsboro, Reading, and the surrounding Berks County area.
           </p>
         </div>
 

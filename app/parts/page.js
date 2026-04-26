@@ -19,7 +19,7 @@ export default async function PartsPage() {
             Parts & Accessories
           </h1>
           <p className="text-muted-foreground max-w-2xl">
-            Upgrade your experience with premium optics and components. I provide high-quality parts to shooters in Mohnton, Birdsboro, Reading, and the surrounding Berks County area.
+            Upgrade your experience with premium optics and components. We provide high-quality parts to shooters in Mohnton, Birdsboro, Reading, and the surrounding Berks County area.
           </p>
         </div>
 

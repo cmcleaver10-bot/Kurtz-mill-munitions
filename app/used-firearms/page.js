@@ -19,7 +19,7 @@ export default async function UsedFirearmsPage() {
             Used Firearms
           </h1>
           <p className="text-muted-foreground max-w-2xl">
-            My pre-owned inventory is thoroughly inspected for safety and performance. I provide reliable handguns, rifles, and shotguns to owners in Mohnton, Birdsboro, Reading, and beyond.
+            Our pre-owned inventory is thoroughly inspected for safety and performance. We provide reliable handguns, rifles, and shotguns to owners in Mohnton, Birdsboro, Reading, and beyond.
           </p>
         </div>
 
