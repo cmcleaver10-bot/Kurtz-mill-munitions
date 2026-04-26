@@ -45,19 +45,35 @@ export async function POST(req) {
         ${message}
       `,
       html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: white; padding: 40px; border-radius: 20px;">
-          <h2 style="color: #c5a059; text-transform: uppercase; letter-spacing: 2px;">New Contact Inquiry</h2>
-          <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Subject:</strong> ${subject || 'General Inquiry'}</p>
-          <div style="background: #111; padding: 20px; border-radius: 10px; margin-top: 20px; border: 1px solid #222;">
-            <p style="margin-top: 0;"><strong>Message:</strong></p>
-            <p style="white-space: pre-wrap; line-height: 1.6; color: #ccc;">${message}</p>
+        <div style="font-family: 'Inter', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #ededed; padding: 40px; border-radius: 12px; border: 1px solid #333;">
+          <h2 style="color: #818a5e; text-transform: uppercase; letter-spacing: 3px; font-size: 20px; margin-bottom: 24px;">New Contact Inquiry</h2>
+          <div style="border-top: 1px solid #262626; margin-bottom: 24px;"></div>
+          
+          <div style="margin-bottom: 16px;">
+            <p style="margin: 0; color: #a3a3a3; text-transform: uppercase; font-size: 10px; font-weight: 700; letter-spacing: 1px;">From</p>
+            <p style="margin: 4px 0 0; font-size: 16px; color: #ffffff; font-weight: 600;">${name}</p>
           </div>
-          <p style="font-size: 12px; color: #555; margin-top: 40px; text-align: center;">
-            Sent from Kurtz Mill Munitions Contact Form
-          </p>
+
+          <div style="margin-bottom: 16px;">
+            <p style="margin: 0; color: #a3a3a3; text-transform: uppercase; font-size: 10px; font-weight: 700; letter-spacing: 1px;">Email Address</p>
+            <p style="margin: 4px 0 0; font-size: 16px; color: #818a5e;">${email}</p>
+          </div>
+
+          <div style="margin-bottom: 24px;">
+            <p style="margin: 0; color: #a3a3a3; text-transform: uppercase; font-size: 10px; font-weight: 700; letter-spacing: 1px;">Subject</p>
+            <p style="margin: 4px 0 0; font-size: 16px; color: #ffffff; font-weight: 600;">${subject || 'General Inquiry'}</p>
+          </div>
+
+          <div style="background: #171717; padding: 24px; border-radius: 8px; border: 1px solid #2a2a2a;">
+            <p style="margin: 0 0 12px; color: #a3a3a3; text-transform: uppercase; font-size: 10px; font-weight: 700; letter-spacing: 1px;">Message</p>
+            <p style="margin: 0; white-space: pre-wrap; line-height: 1.6; color: #ededed; font-size: 15px;">${message}</p>
+          </div>
+
+          <div style="margin-top: 40px; text-align: center; border-top: 1px solid #262626; pt: 24px;">
+            <p style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px;">
+              Kurtz Mill Munitions LLC &bull; Secure Contact System
+            </p>
+          </div>
         </div>
       `,
     };
