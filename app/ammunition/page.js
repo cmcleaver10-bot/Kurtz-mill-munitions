@@ -2,8 +2,8 @@ import { getCollectionData } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
 
 export const metadata = {
-  title: "Ammunition in Mohnton, PA | Kurtz Mill Munitions LLC",
-  description: "Browse our extensive collection of ammunition in Mohnton, PA. Serving Reading, Birdsboro, and Berks County.",
+  title: "Ammunition & Reloading Supplies in Mohnton, PA",
+  description: "Bulk range ammo, premium match cartridges, and precision ammunition in Mohnton, PA. Serving Reading, Birdsboro, and Berks County area shooters.",
 };
 
 export const dynamic = "force-dynamic";

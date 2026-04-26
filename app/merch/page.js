@@ -2,8 +2,8 @@ import { getCollectionData } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
 
 export const metadata = {
-  title: "Shop Merch in Mohnton, PA | Kurtz Mill Munitions LLC",
-  description: "Get your Kurtz Mill Munitions apparel and gear in Mohnton, PA. Serving Berks and Chester County.",
+  title: "Official Apparel & Gear | Mohnton, PA",
+  description: "Shop official Kurtz Mill Munitions apparel, hats, and gear in Mohnton, PA. Show your support for local firearm expertise in Berks County.",
 };
 
 export const dynamic = "force-dynamic";

@@ -2,8 +2,8 @@ import { getCollectionData } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
 
 export const metadata = {
-  title: "Used Firearms in Mohnton, PA | Kurtz Mill Munitions LLC",
-  description: "Browse quality pre-owned firearms in Mohnton, PA. Expertly inspected and serving the Birdsboro and Reading areas.",
+  title: "Used Firearms, Trade-ins & Consignment | Mohnton, PA",
+  description: "Buy and sell pre-owned firearms in Mohnton, PA. Expertly inspected used handguns, rifles, and shotguns serving Berks County.",
 };
 
 export const dynamic = "force-dynamic";

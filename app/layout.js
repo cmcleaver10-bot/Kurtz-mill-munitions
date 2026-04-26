@@ -4,10 +4,58 @@ import Footer from "@/components/Footer";
 import AgeVerification from "@/components/AgeVerification";
 
 export const metadata = {
-  title: "Kurtz Mill Munitions LLC | Firearms & Ammunition in Mohnton, PA",
+  title: {
+    default: "Kurtz Mill Munitions LLC | Firearms & Ammunition in Mohnton, PA",
+    template: "%s | Kurtz Mill Munitions LLC"
+  },
   description:
-    "Your trusted source for premium firearms, ammunition, and expert gunsmith services in Mohnton, PA. Serving Birdsboro, Reading, and Berks County.",
-  keywords: "firearms, ammunition, gunsmith Mohnton PA, gun shop Berks County, Birdsboro PA guns, Reading PA gun store, FFL transfer Mohnton",
+    "Expert gunsmithing, premium firearms, and precision ammunition in Mohnton, PA. Serving Birdsboro, Reading, and Berks County with dedicated service and quality gear.",
+  keywords: ["firearms", "ammunition", "gunsmith Mohnton PA", "gun shop Berks County", "FFL transfers Mohnton", "Birdsboro PA guns", "custom AR-15 builds", "firearm cleaning Berks County"],
+  authors: [{ name: "Kurtz Mill Munitions LLC" }],
+  creator: "Kurtz Mill Munitions LLC",
+  publisher: "Kurtz Mill Munitions LLC",
+  formatDetection: {
+    email: false,
+    address: true,
+    telephone: true,
+  },
+  metadataBase: new URL('https://kurtz-mill-munitions.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "Kurtz Mill Munitions LLC | Mohnton, PA",
+    description: "Premium firearms, precision ammunition, and expert gunsmithing services serving Berks and Chester Counties.",
+    url: 'https://kurtz-mill-munitions.vercel.app',
+    siteName: 'Kurtz Mill Munitions LLC',
+    images: [
+      {
+        url: '/images/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Kurtz Mill Munitions Logo',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Kurtz Mill Munitions LLC | Mohnton, PA",
+    description: "Expert gunsmithing and premium firearms gear in Berks County.",
+    images: ['/images/logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: "/images/logo-icon.png",
     apple: "/images/logo-icon.png",

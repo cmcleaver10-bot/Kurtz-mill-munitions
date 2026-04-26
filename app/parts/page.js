@@ -2,8 +2,8 @@ import { getCollectionData } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
 
 export const metadata = {
-  title: "Firearm Parts & Accessories in Mohnton, PA | Kurtz Mill Munitions LLC",
-  description: "Premium optics, grips, and replacement parts in Mohnton, PA. Serving the Birdsboro and Reading areas.",
+  title: "Firearm Parts, Components & Accessories | Mohnton, PA",
+  description: "Browse high-quality firearm parts and components in Mohnton, PA. From AR-15 triggers to Glock parts, we serve the Berks County area with premium gear.",
 };
 
 export const dynamic = "force-dynamic";

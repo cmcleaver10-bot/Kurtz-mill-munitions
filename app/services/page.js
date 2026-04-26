@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Wrench, ShieldCheck, Zap, Settings, Info, ArrowRight } from 'lucide-react';
 
 export const metadata = {
-  title: "Gunsmithing Services in Mohnton, PA | Kurtz Mill Munitions LLC",
-  description: "Professional gunsmithing, cleaning, and custom AR-15 builds serving Mohnton, Birdsboro, Reading, and Berks County.",
+  title: "Gunsmithing, Repairs & Custom AR-15 Builds | Mohnton, PA",
+  description: "Expert gunsmithing services in Mohnton, PA. Professional firearm cleaning, repairs, optics mounting, and custom AR-15 builds serving Berks and Chester Counties.",
 };
 
 export default function ServicesPage() {

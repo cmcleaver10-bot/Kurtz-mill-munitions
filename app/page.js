@@ -7,6 +7,14 @@ import Hero from '@/components/Hero';
 
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  title: "Premium Firearms, Ammunition & Gunsmithing in Mohnton, PA",
+  description: "Kurtz Mill Munitions is your local source for firearms, precision ammo, and expert gunsmithing. Serving Mohnton, Birdsboro, Reading, and Berks County.",
+  alternates: {
+    canonical: '/',
+  }
+};
+
 export default async function Home() {
   const config = await getSiteConfig();
   const featuredProducts = await getFeaturedProducts();
