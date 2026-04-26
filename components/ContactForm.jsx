@@ -4,17 +4,54 @@ import { useState } from 'react';
 import { Send, CheckCircle2 } from 'lucide-react';
 
 export default function ContactForm() {
-  const [status, setStatus] = useState(null); // 'sending', 'success', 'error'
+  const [status, setStatus] = useState(null); 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: 'General Inquiry',
+    message: ''
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
     
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-      e.target.reset();
-    }, 1500);
+    try {
+      // 1. Save to Firestore (Internal Backup)
+      const { db } = await import('@/lib/firebase');
+      const { collection, addDoc, serverTimestamp } = await import('firebase/firestore');
+      
+      await addDoc(collection(db, 'messages'), {
+        ...formData,
+        timestamp: serverTimestamp(),
+        read: false
+      });
+
+      // 2. Send Email via Formspree
+      const response = await fetch('https://formspree.io/f/mdayjwen', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: 'General Inquiry', message: '' });
+      } else {
+        throw new Error('Formspree submission failed');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setStatus('error');
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   if (status === 'success') {
@@ -40,26 +77,43 @@ export default function ContactForm() {
   return (
     <form 
       onSubmit={handleSubmit} 
-      name="contact" 
-      method="POST" 
-      data-netlify="true"
       className="space-y-6"
     >
-      <input type="hidden" name="form-name" value="contact" />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div className="space-y-2">
           <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Full Name</label>
-          <input type="text" required className="input-field" placeholder="John Doe" />
+          <input 
+            type="text" 
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required 
+            className="input-field" 
+            placeholder="John Doe" 
+          />
         </div>
         <div className="space-y-2">
           <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Email Address</label>
-          <input type="email" required className="input-field" placeholder="john@example.com" />
+          <input 
+            type="email" 
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required 
+            className="input-field" 
+            placeholder="john@example.com" 
+          />
         </div>
       </div>
       
       <div className="space-y-2">
         <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Subject</label>
-        <select className="input-field appearance-none">
+        <select 
+          name="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          className="input-field appearance-none"
+        >
           <option>General Inquiry</option>
           <option>Product Availability</option>
           <option>Gunsmithing Service</option>
@@ -70,8 +124,22 @@ export default function ContactForm() {
 
       <div className="space-y-2">
         <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Message</label>
-        <textarea required rows={6} className="input-field resize-none" placeholder="How can we help you?"></textarea>
+        <textarea 
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          required 
+          rows={6} 
+          className="input-field resize-none" 
+          placeholder="How can we help you?"
+        ></textarea>
       </div>
+
+      {status === 'error' && (
+        <p className="text-red-400 text-sm font-bold uppercase tracking-widest text-center bg-red-400/10 py-3 rounded-lg border border-red-400/20">
+          Something went wrong. Please try again or email us directly.
+        </p>
+      )}
 
       <button
         type="submit"
